@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +9,14 @@
     <meta property="og:description" content="現場の「困った」をITで解決。製造・建設・レンタル業の中小企業に特化したエンジニアチームです。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Syne:wght@700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0F1117;
             --surface: #181C26;
             --surface2: #1E2333;
-            --border: rgba(255, 255, 255, 0.10);
-            --border-bright: rgba(255, 255, 255, 0.22);
+            --border: rgba(255,255,255,0.10);
+            --border-bright: rgba(255,255,255,0.22);
             --accent: #00D98B;
             --accent2: #4F8EF7;
             --text: #F0F4FA;
@@ -30,17 +27,9 @@
             --display: 'Syne', sans-serif;
         }
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--sans);
@@ -57,33 +46,21 @@
             position: fixed;
             inset: 0;
             background-image:
-                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
             z-index: 0;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
 
         /* ---- NAV ---- */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 100;
             display: flex;
             align-items: center;
@@ -116,9 +93,7 @@
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent);
-        }
+        .nav-links a:hover { color: var(--accent); }
 
         .nav-cta {
             font-family: var(--mono);
@@ -150,9 +125,9 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse 70% 55% at 75% 50%, rgba(0, 217, 139, 0.12) 0%, transparent 65%),
-                radial-gradient(ellipse 50% 45% at 15% 75%, rgba(79, 142, 247, 0.10) 0%, transparent 55%),
-                radial-gradient(ellipse 60% 40% at 50% 0%, rgba(79, 142, 247, 0.06) 0%, transparent 50%);
+                radial-gradient(ellipse 70% 55% at 75% 50%, rgba(0,217,139,0.12) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 45% at 15% 75%, rgba(79,142,247,0.10) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 40% at 50% 0%, rgba(79,142,247,0.06) 0%, transparent 50%);
         }
 
         .hero-label {
@@ -191,10 +166,28 @@
 
         .hero-sub {
             font-size: 1.05rem;
-            color: rgba(230, 237, 243, 0.75);
-            max-width: 500px;
+            color: rgba(230,237,243,0.75);
+            max-width: 520px;
             margin-bottom: 3.5rem;
             line-height: 2.1;
+        }
+
+        .hero-proof {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            color: var(--text-dim);
+            background: var(--surface);
+            border: 1px solid var(--border-bright);
+            padding: 0.5rem 1rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .hero-proof span {
+            color: var(--accent);
         }
 
         .hero-actions {
@@ -301,15 +294,8 @@
         }
 
         @keyframes scrollDown {
-            0% {
-                opacity: 1;
-                transform: scaleY(1) translateY(0);
-            }
-
-            100% {
-                opacity: 0;
-                transform: scaleY(0.5) translateY(20px);
-            }
+            0% { opacity: 1; transform: scaleY(1) translateY(0); }
+            100% { opacity: 0; transform: scaleY(0.5) translateY(20px); }
         }
 
         /* ---- SECTION BASE ---- */
@@ -469,7 +455,7 @@
 
         .approach-card:hover .card-icon-wrap {
             border-color: var(--accent);
-            background: rgba(0, 217, 139, 0.10);
+            background: rgba(0,217,139,0.10);
         }
 
         .approach-card h3 {
@@ -502,14 +488,8 @@
             margin-bottom: 0.5rem;
         }
 
-        .comp-before .comp-label {
-            color: var(--text-dim);
-            text-decoration: none;
-        }
-
-        .comp-after .comp-label {
-            color: var(--accent);
-        }
+        .comp-before .comp-label { color: var(--text-dim); text-decoration: none; }
+        .comp-after .comp-label { color: var(--accent); }
 
         .comp-after {
             color: var(--text-sub);
@@ -541,18 +521,13 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(0, 229, 160, 0.04) 0%, transparent 60%);
+            background: linear-gradient(135deg, rgba(0,229,160,0.04) 0%, transparent 60%);
             opacity: 0;
             transition: opacity 0.4s;
         }
 
-        .case-card:hover {
-            border-color: rgba(0, 229, 160, 0.4);
-        }
-
-        .case-card:hover::after {
-            opacity: 1;
-        }
+        .case-card:hover { border-color: rgba(0,229,160,0.4); }
+        .case-card:hover::after { opacity: 1; }
 
         .case-tag {
             font-family: var(--mono);
@@ -560,8 +535,8 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--accent);
-            background: rgba(0, 229, 160, 0.08);
-            border: 1px solid rgba(0, 229, 160, 0.2);
+            background: rgba(0,229,160,0.08);
+            border: 1px solid rgba(0,229,160,0.2);
             padding: 0.3rem 0.75rem;
             display: inline-block;
             margin-bottom: 2rem;
@@ -617,9 +592,7 @@
             transition: background 0.3s;
         }
 
-        .why-item:hover {
-            background: var(--surface);
-        }
+        .why-item:hover { background: var(--surface); }
 
         .why-num {
             font-family: var(--mono);
@@ -661,7 +634,7 @@
             right: -200px;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(0, 229, 160, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0,229,160,0.05) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -798,62 +771,123 @@
 
         /* ---- RESPONSIVE ---- */
         @media (max-width: 900px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 0 1.5rem;
-                padding-top: 80px;
-                min-height: auto;
-                padding-bottom: 4rem;
-            }
-
-            .hero-stat-group {
-                display: none;
-            }
-
-            .section {
-                padding: 80px 1.5rem;
-            }
-
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .hero { padding: 0 1.5rem; padding-top: 80px; min-height: auto; padding-bottom: 4rem; }
+            .hero-stat-group { display: none; }
+            .section { padding: 80px 1.5rem; }
             .identity-layout,
-            .contact-layout {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .approach-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cases-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .why-layout {
-                grid-template-columns: 1fr;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-                padding: 2rem 1.5rem;
-            }
+            .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .approach-grid { grid-template-columns: 1fr; }
+            .cases-grid { grid-template-columns: 1fr; }
+            .why-layout { grid-template-columns: 1fr; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
         }
+
+        /* ---- OPERATOR ---- */
+        .operator-grid {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-bright);
+            max-width: 640px;
+        }
+
+        .operator-row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            border-bottom: 1px solid var(--border-bright);
+        }
+
+        .operator-row:last-child {
+            border-bottom: none;
+        }
+
+        .operator-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            padding: 1.25rem 1.5rem;
+            border-right: 1px solid var(--border-bright);
+            display: flex;
+            align-items: center;
+            background: var(--surface);
+        }
+
+        .operator-value {
+            font-size: 0.95rem;
+            color: var(--text);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---- CASE RESULT ---- */
+        .case-result {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2rem 0 1.5rem;
+            padding: 1.5rem;
+            background: var(--surface2);
+            border: 1px solid var(--border-bright);
+        }
+
+        .case-result-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .case-result-num {
+            font-family: var(--display);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .case-result-num--muted {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            text-decoration: line-through;
+        }
+
+        .case-result-unit {
+            font-size: 0.75rem;
+            font-family: var(--sans);
+            font-weight: 400;
+        }
+
+        .case-result-label {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        .case-result-divider {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+        }
+
     </style>
 </head>
-
 <body>
 
     <!-- NAV -->
     <nav>
-        <div class="nav-logo">現場DX // Support</div>
+        <div class="nav-logo">現場DXサポート</div>
         <div class="nav-links">
             <a href="#identity">チーム</a>
             <a href="#approach">アプローチ</a>
@@ -874,8 +908,12 @@
             </h1>
             <p class="hero-sub">
                 貴社の業務に合わせた「ちょうどいい」システムを構築します。<br>
-                大手向けのパッケージ不要。現場の泥臭い課題を、スマートな技術で。
+                大手向けのパッケージソフト不要。現場の泥臭い課題を、チームが直接解決します。
             </p>
+            <div class="hero-proof">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                kintone導入 <span>15万円</span>・AI開発 <span>20万円〜</span>　／　SIer相場 <span style="color:var(--text-dim);text-decoration:line-through;">500万〜数千万円</span>
+            </div>
             <div class="hero-actions">
                 <a href="#contact" class="btn-primary">無料で相談する →</a>
                 <a href="#cases" class="btn-ghost">導入事例を見る</a>
@@ -884,8 +922,8 @@
 
         <div class="hero-stat-group">
             <div class="hero-stat">
-                <div class="hero-stat-num">1/10<span>x</span></div>
-                <div class="hero-stat-label">大手比コスト</div>
+                <div class="hero-stat-num">2<span>社</span></div>
+                <div class="hero-stat-label">導入実績</div>
             </div>
             <div class="hero-stat">
                 <div class="hero-stat-num">100<span>%</span></div>
@@ -908,15 +946,11 @@
                     <h2 class="section-title">現場DXサポート</h2>
                     <p class="section-lead">
                         中小企業の現場改善に特化したエンジニアチームです。<br>
-                        製造ラインの工程管理、資材置き場の在庫確認など、<br>
-                        現場の課題をダイレクトに解決します。
+                        製造・建設・サービス業の業務課題を、<br>
+                        エンジニアが直接ヒアリングして解決します。
                     </p>
                     <div class="identity-tag">
-                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                            <circle cx="12" cy="10" r="3" />
-                        </svg>
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         全国対応可能
                     </div>
                 </div>
@@ -945,12 +979,7 @@
                 <div class="approach-card fade-up">
                     <div class="card-num">// 01</div>
                     <div class="card-icon-wrap">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="3" />
-                            <path
-                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                     </div>
                     <h3>事務作業の自動化</h3>
                     <div class="comparison">
@@ -967,11 +996,7 @@
                 <div class="approach-card fade-up">
                     <div class="card-num">// 02</div>
                     <div class="card-icon-wrap">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                            <line x1="12" y1="18" x2="12.01" y2="18" />
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                     </div>
                     <h3>現場の可視化</h3>
                     <div class="comparison">
@@ -988,12 +1013,7 @@
                 <div class="approach-card fade-up">
                     <div class="card-num">// 03</div>
                     <div class="card-icon-wrap">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="18" y1="20" x2="18" y2="10" />
-                            <line x1="12" y1="20" x2="12" y2="4" />
-                            <line x1="6" y1="20" x2="6" y2="14" />
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
                     </div>
                     <h3>データの活用</h3>
                     <div class="comparison">
@@ -1020,17 +1040,28 @@
 
             <div class="cases-grid">
                 <div class="case-card fade-up">
-                    <div class="case-tag">鍵・何でも屋業</div>
+                    <div class="case-tag">鍵・便利屋業</div>
                     <h4>kintone × AI 一元管理</h4>
                     <p>
-                        顧客・案件・売上のすべてを一元管理。<br>
-                        「領収書のAI自動読み取り」により、手入力の手間をゼロにし、
-                        システムへの自動入力を実現しました。
+                        顧客・案件・売上をkintoneで一元管理。<br>
+                        領収書のAI自動読み取りにより手入力作業をゼロ化。<br>
+                        月次の事務作業時間を大幅に削減しました。
                     </p>
+                    <div class="case-result">
+                        <div class="case-result-item">
+                            <span class="case-result-num">15<span class="case-result-unit">万円</span></span>
+                            <span class="case-result-label">導入費用</span>
+                        </div>
+                        <div class="case-result-divider">vs</div>
+                        <div class="case-result-item case-result-item--muted">
+                            <span class="case-result-num case-result-num--muted">100〜500<span class="case-result-unit">万円</span></span>
+                            <span class="case-result-label">SIer相場（kintone）</span>
+                        </div>
+                    </div>
                     <div class="case-tech">
                         <span class="tech-badge">kintone</span>
                         <span class="tech-badge">AI-OCR</span>
-                        <span class="tech-badge">自動化</span>
+                        <span class="tech-badge">業務自動化</span>
                     </div>
                 </div>
                 <div class="case-card fade-up">
@@ -1038,8 +1069,20 @@
                     <h4>桜満開予想AI</h4>
                     <p>
                         過去の気象データと開花実績を学習させたAIを導入。<br>
-                        精度の高い満開日予測により、最適なツアー企画をサポートしました。
+                        満開日を高精度で予測し、ツアー企画の立案工数を削減。<br>
+                        シーズン前の早期予約獲得に貢献しました。
                     </p>
+                    <div class="case-result">
+                        <div class="case-result-item">
+                            <span class="case-result-num">20<span class="case-result-unit">万円</span></span>
+                            <span class="case-result-label">導入費用</span>
+                        </div>
+                        <div class="case-result-divider">vs</div>
+                        <div class="case-result-item case-result-item--muted">
+                            <span class="case-result-num case-result-num--muted">300〜1,000<span class="case-result-unit">万円</span></span>
+                            <span class="case-result-label">SIer相場（AI開発）</span>
+                        </div>
+                    </div>
                     <div class="case-tech">
                         <span class="tech-badge">機械学習</span>
                         <span class="tech-badge">気象データ分析</span>
@@ -1064,8 +1107,9 @@
                     <p>
                         豪華なオフィスも、多くの営業マンも持ちません。<br>
                         頂いた費用のすべてを、開発の品質に還元します。<br><br>
-                        大手ベンダーの<span class="why-highlight">1/10の価格</span>で<br>
-                        同等以上のシステムを導入しました。
+                        kintone導入なら<span class="why-highlight">15万円〜</span>、AIシステムも<span class="why-highlight">20万円〜</span>。<br>
+                        大手SIerへの同等依頼は<span class="why-highlight">最低500万円〜</span>が相場。<br>
+                        中堅SIerでもkintoneカスタマイズは<span class="why-highlight">100〜300万円</span>かかります。
                     </p>
                 </div>
                 <div class="why-item fade-up">
@@ -1087,8 +1131,7 @@
             <div class="contact-layout">
                 <div>
                     <div class="section-eyebrow">Contact</div>
-                    <h3 class="contact-info"
-                        style="font-family: var(--display); font-size: 2rem; font-weight: 800; line-height: 1.4; margin-bottom: 1.5rem;">
+                    <h3 class="contact-info" style="font-family: var(--display); font-size: 2rem; font-weight: 800; line-height: 1.4; margin-bottom: 1.5rem;">
                         まずは、現場の<br>「愚痴」をお聞かせください。
                     </h3>
                     <p style="font-size: 0.95rem; color: var(--text-sub); line-height: 2.2;">
@@ -1097,9 +1140,9 @@
                         その一言が、革新の始まりです。
                     </p>
                     <p style="font-size: 0.95rem; color: var(--text-sub); line-height: 2.2; margin-top: 1rem;">
-                        エンジニアチームが直接、<br>解決策をご提案します。
+                        エンジニアチームが直接ヒアリングし、<br>解決策をご提案します。
                     </p>
-                    <p class="contact-note">※ 現在はメールでのみ受け付けております。</p>
+                    <p class="contact-note">※ 2営業日以内にご返信します。</p>
                 </div>
 
                 <form class="contact-form" id="contactForm">
@@ -1113,8 +1156,7 @@
                     </div>
                     <div class="form-group">
                         <label for="message">ご相談内容（形式自由）</label>
-                        <textarea id="message" name="message" rows="6" required
-                            placeholder="現場の課題や、現在の業務フローについて簡単にお書きください。"></textarea>
+                        <textarea id="message" name="message" rows="6" required placeholder="現場の課題や、現在の業務フローについて簡単にお書きください。"></textarea>
                     </div>
                     <button type="button" class="btn-submit" id="submitBtn">未来への一歩を踏み出す（無料） →</button>
                 </form>
@@ -1122,16 +1164,52 @@
         </div>
     </section>
 
+    <!-- OPERATOR MODAL -->
+    <div id="operatorModal" style="display:none; position:fixed; inset:0; z-index:200; align-items:center; justify-content:center;">
+        <div id="operatorOverlay" style="position:absolute; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px);"></div>
+        <div style="position:relative; z-index:1; background:var(--surface2); border:1px solid var(--border-bright); padding:3rem; max-width:480px; width:90%; animation:fadeInUp 0.3s ease;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
+                <span style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.3em; color:var(--accent); text-transform:uppercase;">Operator</span>
+                <button id="closeModal" style="background:none; border:1px solid var(--border-bright); color:var(--text-sub); width:32px; height:32px; cursor:pointer; font-size:1rem; display:flex; align-items:center; justify-content:center; transition:all 0.2s;">&times;</button>
+            </div>
+            <div class="operator-grid">
+                <div class="operator-row">
+                    <span class="operator-label">運営者</span>
+                    <span class="operator-value">現場DXサポート</span>
+                </div>
+                <div class="operator-row">
+                    <span class="operator-label">代表</span>
+                    <span class="operator-value">田中 達也</span>
+                </div>
+                <div class="operator-row">
+                    <span class="operator-label">所在地</span>
+                    <span class="operator-value">東京都杉並区和泉1丁目</span>
+                </div>
+                <div class="operator-row">
+                    <span class="operator-label">メール</span>
+                    <span class="operator-value"><a href="mailto:tanaka.tt.biz@gmail.com" style="color:var(--accent); text-decoration:underline; text-underline-offset:4px;">tanaka.tt.biz@gmail.com</a></span>
+                </div>
+                <div class="operator-row">
+                    <span class="operator-label">お問い合わせ</span>
+                    <span class="operator-value"><a href="#contact" onclick="closeOperatorModal()" style="color:var(--accent); text-decoration:underline; text-underline-offset:4px;">お問い合わせフォームより</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer>
-        <div class="footer-logo">現場DX // Support</div>
-        <div class="footer-copy">&copy; 現場DXサポート. All rights reserved.</div>
+        <div class="footer-logo">現場DXサポート</div>
+        <div style="display:flex; gap:2rem; align-items:center;">
+            <button onclick="openOperatorModal()" style="background:none; border:none; cursor:pointer; font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; color:var(--text-sub); text-transform:uppercase; padding:0; transition:color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-sub)'">運営者情報</button>
+            <div class="footer-copy">&copy; 2025 現場DXサポート. All rights reserved.</div>
+        </div>
     </footer>
 
     <script>
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) target.scrollIntoView({ behavior: 'smooth' });
@@ -1151,10 +1229,10 @@
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
         // Form: build mailto with encoded Japanese body
-        document.getElementById('submitBtn').addEventListener('click', function () {
-            const form = document.getElementById('contactForm');
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const form    = document.getElementById('contactForm');
             const company = document.getElementById('company').value.trim();
-            const email = document.getElementById('email').value.trim();
+            const email   = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
 
             // Validation
@@ -1216,11 +1294,25 @@
 
             // encodeURIComponent handles Japanese correctly
             window.location.href =
-                'mailto:contact@example.com'
+                'mailto:tanaka.tt.biz@gmail.com'
                 + '?subject=' + encodeURIComponent(subject)
-                + '&body=' + encodeURIComponent(body);
+                + '&body='    + encodeURIComponent(body);
+        });
+
+        // Operator modal
+        function openOperatorModal() {
+            const modal = document.getElementById('operatorModal');
+            modal.style.display = 'flex';
+        }
+        function closeOperatorModal() {
+            const modal = document.getElementById('operatorModal');
+            modal.style.display = 'none';
+        }
+        document.getElementById('closeModal').addEventListener('click', closeOperatorModal);
+        document.getElementById('operatorOverlay').addEventListener('click', closeOperatorModal);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeOperatorModal();
         });
     </script>
 </body>
-
 </html>
