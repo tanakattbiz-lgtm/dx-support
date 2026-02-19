@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>現場DXサポート | 建設・製造・レンタル業界のITソリューション</title>
+    <meta name="description" content="現場の「困った」をITで解決。製造・建設・レンタル業の中小企業に特化したエンジニアチームです。">
+    <meta property="og:title" content="現場DXサポート | 現場の課題をITで解決">
+    <meta property="og:description" content="現場の「困った」をITで解決。製造・建設・レンタル業の中小企業に特化したエンジニアチームです。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F1117;
+            --surface: #181C26;
+            --surface2: #1E2333;
+            --border: rgba(255, 255, 255, 0.10);
+            --border-bright: rgba(255, 255, 255, 0.22);
+            --accent: #00D98B;
+            --accent2: #4F8EF7;
+            --text: #F0F4FA;
+            --text-sub: #A8B3C4;
+            --text-dim: #6B788A;
+            --mono: 'Space Mono', monospace;
+            --sans: 'Noto Sans JP', sans-serif;
+            --display: 'Syne', sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.9;
+            overflow-x: hidden;
+        }
+
+        /* ---- Grid Overlay ---- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ---- NAV ---- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 3rem;
+            background: rgba(8, 12, 16, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            padding: 0.6rem 1.5rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 3rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 55% at 75% 50%, rgba(0, 217, 139, 0.12) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 45% at 15% 75%, rgba(79, 142, 247, 0.10) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 40% at 50% 0%, rgba(79, 142, 247, 0.06) 0%, transparent 50%);
+        }
+
+        .hero-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-label::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .hero-title {
+            font-family: var(--display);
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title em {
+            font-style: normal;
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: rgba(230, 237, 243, 0.75);
+            max-width: 500px;
+            margin-bottom: 3.5rem;
+            line-height: 2.1;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--accent);
+            color: #000;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 1rem 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #00ffb3;
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-sub);
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-bright);
+            transition: all 0.3s;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--text);
+            color: var(--text);
+        }
+
+        .hero-stat-group {
+            position: absolute;
+            right: 3rem;
+            bottom: 6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .hero-stat {
+            text-align: right;
+        }
+
+        .hero-stat-num {
+            font-family: var(--display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1;
+        }
+
+        .hero-stat-num span {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .hero-stat-label {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            color: var(--text-sub);
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            animation: scrollDown 1.5s ease-in-out infinite;
+        }
+
+        @keyframes scrollDown {
+            0% {
+                opacity: 1;
+                transform: scaleY(1) translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scaleY(0.5) translateY(20px);
+            }
+        }
+
+        /* ---- SECTION BASE ---- */
+        .section {
+            position: relative;
+            z-index: 1;
+            padding: 120px 3rem;
+            border-top: 1px solid var(--border-bright);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-eyebrow::after {
+            content: '';
+            flex: 1;
+            max-width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .section-title {
+            font-family: var(--display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-lead {
+            color: var(--text-sub);
+            font-size: 1rem;
+            max-width: 520px;
+            line-height: 2.2;
+        }
+
+        /* ---- IDENTITY ---- */
+        #identity {
+            background: var(--surface);
+        }
+
+        /* identity concept box with slightly lighter bg */
+        .identity-concept {
+            background: var(--surface2);
+            border: 1px solid var(--border-bright);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .identity-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .identity-concept::before {
+            content: '"';
+            position: absolute;
+            top: -0.5rem;
+            right: 1.5rem;
+            font-family: var(--display);
+            font-size: 8rem;
+            color: var(--accent);
+            opacity: 0.08;
+            line-height: 1;
+        }
+
+        .identity-concept h4 {
+            font-family: var(--display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .identity-concept p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            line-height: 2.4;
+        }
+
+        .identity-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: var(--text-sub);
+            background: var(--surface2);
+            border: 1px solid var(--border-bright);
+            padding: 0.4rem 0.8rem;
+            margin-top: 2rem;
+            text-transform: uppercase;
+        }
+
+        /* ---- APPROACH ---- */
+        #approach {
+            background: var(--bg);
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border-bright);
+            border: 1px solid var(--border-bright);
+            margin-top: 5rem;
+        }
+
+        .approach-card {
+            background: var(--bg);
+            padding: 3rem;
+            transition: background 0.3s;
+        }
+
+        .approach-card:hover {
+            background: var(--surface);
+        }
+
+        .card-num {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .card-icon-wrap {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--border-bright);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .approach-card:hover .card-icon-wrap {
+            border-color: var(--accent);
+            background: rgba(0, 217, 139, 0.10);
+        }
+
+        .approach-card h3 {
+            font-family: var(--display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .comparison {
+            font-size: 0.9rem;
+            line-height: 1.9;
+        }
+
+        .comp-before {
+            color: var(--text-dim);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-bright);
+            text-decoration: line-through;
+        }
+
+        .comp-label {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .comp-before .comp-label {
+            color: var(--text-dim);
+            text-decoration: none;
+        }
+
+        .comp-after .comp-label {
+            color: var(--accent);
+        }
+
+        .comp-after {
+            color: var(--text-sub);
+        }
+
+        /* ---- CASES ---- */
+        #cases {
+            background: var(--surface);
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 5rem;
+        }
+
+        .case-card {
+            background: var(--bg);
+            border: 1px solid var(--border-bright);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s;
+            cursor: default;
+        }
+
+        .case-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 229, 160, 0.04) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .case-card:hover {
+            border-color: rgba(0, 229, 160, 0.4);
+        }
+
+        .case-card:hover::after {
+            opacity: 1;
+        }
+
+        .case-tag {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: rgba(0, 229, 160, 0.08);
+            border: 1px solid rgba(0, 229, 160, 0.2);
+            padding: 0.3rem 0.75rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .case-card h4 {
+            font-family: var(--display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .case-card p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            line-height: 2.1;
+        }
+
+        .case-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-badge {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            letter-spacing: 0.1em;
+            color: var(--text-sub);
+            border: 1px solid var(--border-bright);
+            padding: 0.3rem 0.6rem;
+        }
+
+        /* ---- WHY US ---- */
+        #why-us {
+            background: var(--bg);
+        }
+
+        .why-layout {
+            margin-top: 5rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--border-bright);
+            border: 1px solid var(--border-bright);
+        }
+
+        .why-item {
+            background: var(--bg);
+            padding: 4rem;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        .why-item:hover {
+            background: var(--surface);
+        }
+
+        .why-num {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            margin-bottom: 2.5rem;
+        }
+
+        .why-item h3 {
+            font-family: var(--display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .why-item p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            line-height: 2.2;
+        }
+
+        .why-highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ---- CONTACT ---- */
+        #contact {
+            background: var(--surface);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 229, 160, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: var(--display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            line-height: 2.2;
+            margin-bottom: 1rem;
+        }
+
+        .contact-note {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--text-sub);
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-sub);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: var(--bg);
+            border: 1px solid var(--border-bright);
+            color: var(--text);
+            font-family: var(--sans);
+            font-size: 1rem;
+            padding: 1rem 1.25rem;
+            width: 100%;
+            transition: border-color 0.3s;
+            outline: none;
+            resize: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-dim);
+            opacity: 1;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .btn-submit {
+            background: var(--accent);
+            color: #000;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 1.25rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background: #00ffb3;
+            transform: translateY(-2px);
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            padding: 2rem 3rem;
+            border-top: 1px solid var(--border-bright);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .footer-copy {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            color: var(--text-sub);
+        }
+
+        /* ---- ANIMATIONS ---- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 900px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 0 1.5rem;
+                padding-top: 80px;
+                min-height: auto;
+                padding-bottom: 4rem;
+            }
+
+            .hero-stat-group {
+                display: none;
+            }
+
+            .section {
+                padding: 80px 1.5rem;
+            }
+
+            .identity-layout,
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-layout {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo">現場DX // Support</div>
+        <div class="nav-links">
+            <a href="#identity">チーム</a>
+            <a href="#approach">アプローチ</a>
+            <a href="#cases">実績</a>
+            <a href="#why-us">強み</a>
+        </div>
+        <a href="#contact" class="nav-cta">無料相談</a>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container" style="position:relative;z-index:1;">
+            <div class="hero-label">Genba DX Support</div>
+            <h1 class="hero-title">
+                現場の<em>「困った」</em>を、<br>
+                ITの力で解決する。
+            </h1>
+            <p class="hero-sub">
+                貴社の業務に合わせた「ちょうどいい」システムを構築します。<br>
+                大手向けのパッケージ不要。現場の泥臭い課題を、スマートな技術で。
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">無料で相談する →</a>
+                <a href="#cases" class="btn-ghost">導入事例を見る</a>
+            </div>
+        </div>
+
+        <div class="hero-stat-group">
+            <div class="hero-stat">
+                <div class="hero-stat-num">1/10<span>x</span></div>
+                <div class="hero-stat-label">大手比コスト</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">100<span>%</span></div>
+                <div class="hero-stat-label">オーダーメイド</div>
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <div class="scroll-line"></div>
+            Scroll
+        </div>
+    </header>
+
+    <!-- IDENTITY -->
+    <section id="identity" class="section">
+        <div class="container">
+            <div class="identity-layout">
+                <div>
+                    <div class="section-eyebrow">Team</div>
+                    <h2 class="section-title">現場DXサポート</h2>
+                    <p class="section-lead">
+                        中小企業の現場改善に特化したエンジニアチームです。<br>
+                        製造ラインの工程管理、資材置き場の在庫確認など、<br>
+                        現場の課題をダイレクトに解決します。
+                    </p>
+                    <div class="identity-tag">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        全国対応可能
+                    </div>
+                </div>
+                <div class="identity-concept fade-up">
+                    <h4>「デジタルは、現場のためにある。」</h4>
+                    <p>
+                        大掛かりなパッケージソフトは提案しません。<br>
+                        現場の人間が毎日使いたくなる、<br>
+                        シンプルで実用的なシステムだけを届けます。<br><br>
+                        仕様書より現場の声。<br>
+                        それが私たちの開発哲学です。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section id="approach" class="section">
+        <div class="container">
+            <div class="section-eyebrow">Approach</div>
+            <h2 class="section-title">非効率をなくし、<br>本質的な仕事へ。</h2>
+            <p class="section-lead">私たちが提供するのは「ソフト」ではなく「時間」です。</p>
+
+            <div class="approach-grid">
+                <div class="approach-card fade-up">
+                    <div class="card-num">// 01</div>
+                    <div class="card-icon-wrap">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                    </div>
+                    <h3>事務作業の自動化</h3>
+                    <div class="comparison">
+                        <div class="comp-before">
+                            <span class="comp-label">Before</span>
+                            毎日繰り返されるExcel転記、電話での在庫確認。
+                        </div>
+                        <div class="comp-after">
+                            <span class="comp-label">After</span>
+                            ワンクリックで完了する自動化システム。単純作業はAIに任せましょう。
+                        </div>
+                    </div>
+                </div>
+                <div class="approach-card fade-up">
+                    <div class="card-num">// 02</div>
+                    <div class="card-icon-wrap">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                            <line x1="12" y1="18" x2="12.01" y2="18" />
+                        </svg>
+                    </div>
+                    <h3>現場の可視化</h3>
+                    <div class="comparison">
+                        <div class="comp-before">
+                            <span class="comp-label">Before</span>
+                            現場に行かないと分からない、担当者しか知らない。
+                        </div>
+                        <div class="comp-after">
+                            <span class="comp-label">After</span>
+                            スマホ一つで、どこからでも現場が見える。リアルタイムに共有します。
+                        </div>
+                    </div>
+                </div>
+                <div class="approach-card fade-up">
+                    <div class="card-num">// 03</div>
+                    <div class="card-icon-wrap">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg>
+                    </div>
+                    <h3>データの活用</h3>
+                    <div class="comparison">
+                        <div class="comp-before">
+                            <span class="comp-label">Before</span>
+                            カンと経験頼みの予測。
+                        </div>
+                        <div class="comp-after">
+                            <span class="comp-label">After</span>
+                            データに基づいたAIサポート。需要予測や最適配置を提案します。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASES -->
+    <section id="cases" class="section">
+        <div class="container">
+            <div class="section-eyebrow">Case Studies</div>
+            <h2 class="section-title">導入事例</h2>
+            <p class="section-lead">実際の現場で生まれた、リアルな解決策。</p>
+
+            <div class="cases-grid">
+                <div class="case-card fade-up">
+                    <div class="case-tag">鍵・何でも屋業</div>
+                    <h4>kintone × AI 一元管理</h4>
+                    <p>
+                        顧客・案件・売上のすべてを一元管理。<br>
+                        「領収書のAI自動読み取り」により、手入力の手間をゼロにし、
+                        システムへの自動入力を実現しました。
+                    </p>
+                    <div class="case-tech">
+                        <span class="tech-badge">kintone</span>
+                        <span class="tech-badge">AI-OCR</span>
+                        <span class="tech-badge">自動化</span>
+                    </div>
+                </div>
+                <div class="case-card fade-up">
+                    <div class="case-tag">旅行代理店</div>
+                    <h4>桜満開予想AI</h4>
+                    <p>
+                        過去の気象データと開花実績を学習させたAIを導入。<br>
+                        精度の高い満開日予測により、最適なツアー企画をサポートしました。
+                    </p>
+                    <div class="case-tech">
+                        <span class="tech-badge">機械学習</span>
+                        <span class="tech-badge">気象データ分析</span>
+                        <span class="tech-badge">予測AI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section id="why-us" class="section">
+        <div class="container">
+            <div class="section-eyebrow">Why Us</div>
+            <h2 class="section-title">独自の強み</h2>
+            <p class="section-lead">中小企業だからこそ、賢くITを使う。</p>
+
+            <div class="why-layout">
+                <div class="why-item fade-up">
+                    <div class="why-num">// 01</div>
+                    <h3>コストパフォーマンス</h3>
+                    <p>
+                        豪華なオフィスも、多くの営業マンも持ちません。<br>
+                        頂いた費用のすべてを、開発の品質に還元します。<br><br>
+                        大手ベンダーの<span class="why-highlight">1/10の価格</span>で<br>
+                        同等以上のシステムを導入しました。
+                    </p>
+                </div>
+                <div class="why-item fade-up">
+                    <div class="why-num">// 02</div>
+                    <h3>透明な開発プロセス</h3>
+                    <p>
+                        「何を作っているか分からない」をなくします。<br><br>
+                        プロトタイプを早期にお見せし、実際に触っていただきながら、
+                        現場のフィードバックを<span class="why-highlight">即座に反映</span>します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact-layout">
+                <div>
+                    <div class="section-eyebrow">Contact</div>
+                    <h3 class="contact-info"
+                        style="font-family: var(--display); font-size: 2rem; font-weight: 800; line-height: 1.4; margin-bottom: 1.5rem;">
+                        まずは、現場の<br>「愚痴」をお聞かせください。
+                    </h3>
+                    <p style="font-size: 0.95rem; color: var(--text-sub); line-height: 2.2;">
+                        仕様書は不要です。<br>
+                        「今のやり方のここが気に入らない」<br>
+                        その一言が、革新の始まりです。
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--text-sub); line-height: 2.2; margin-top: 1rem;">
+                        エンジニアチームが直接、<br>解決策をご提案します。
+                    </p>
+                    <p class="contact-note">※ 現在はメールでのみ受け付けております。</p>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="company">貴社名 / ご担当者様名</label>
+                        <input type="text" id="company" name="company" required placeholder="株式会社〇〇 田中太郎">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" name="email" required placeholder="example@co.jp">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">ご相談内容（形式自由）</label>
+                        <textarea id="message" name="message" rows="6" required
+                            placeholder="現場の課題や、現在の業務フローについて簡単にお書きください。"></textarea>
+                    </div>
+                    <button type="button" class="btn-submit" id="submitBtn">未来への一歩を踏み出す（無料） →</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">現場DX // Support</div>
+        <div class="footer-copy">&copy; 現場DXサポート. All rights reserved.</div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Fade-up on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Form: build mailto with encoded Japanese body
+        document.getElementById('submitBtn').addEventListener('click', function () {
+            const form = document.getElementById('contactForm');
+            const company = document.getElementById('company').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Validation
+            let isValid = true;
+            [company, email, message].forEach((val, i) => {
+                const el = [document.getElementById('company'), document.getElementById('email'), document.getElementById('message')][i];
+                if (!val) {
+                    isValid = false;
+                    el.style.borderColor = '#ff4444';
+                    el.setAttribute('aria-invalid', 'true');
+                } else {
+                    el.style.borderColor = '';
+                    el.removeAttribute('aria-invalid');
+                }
+            });
+
+            const existing = form.querySelector('.form-error');
+            if (existing) existing.remove();
+
+            if (!isValid) {
+                const msg = document.createElement('p');
+                msg.textContent = '※ すべての項目を入力してください。';
+                msg.style.cssText = 'color:#ff4444;font-size:0.75rem;font-family:var(--mono);margin-top:0.5rem;';
+                msg.className = 'form-error';
+                form.appendChild(msg);
+                return;
+            }
+
+            // Designed email body
+            const now = new Date().toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+
+            const body = [
+                '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+                '　現場DXサポート　お問い合わせフォーム',
+                '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+                '',
+                '送信日時：' + now,
+                '',
+                '【 貴社名 / ご担当者様名 】',
+                company,
+                '',
+                '【 メールアドレス 】',
+                email,
+                '',
+                '【 ご相談内容 】',
+                '───────────────────────────',
+                message,
+                '───────────────────────────',
+                '',
+                '※ このメールは現場DXサポートのお問い合わせフォームより送信されました。',
+                '※ 担当エンジニアより3営業日以内にご返信いたします。',
+                '',
+                '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+                '　現場DXサポート',
+                '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+            ].join('\n');
+
+            const subject = '【お問い合わせ】' + company + ' 様より';
+
+            // encodeURIComponent handles Japanese correctly
+            window.location.href =
+                'mailto:contact@example.com'
+                + '?subject=' + encodeURIComponent(subject)
+                + '&body=' + encodeURIComponent(body);
+        });
+    </script>
+</body>
+
+</html>
